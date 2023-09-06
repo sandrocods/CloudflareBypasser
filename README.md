@@ -63,6 +63,83 @@ options:
 |`get-page`| Will Return a requests verbose use a bypassed cookies **Default is False**|
 |`headless`| Will Run in mode Headless **Default is False**|
 
+## 📩 Response
+
+##### Target site detected use a cloudflare
+```json
+{
+  "status": true,
+  "message": "CloudFlare Detected, Trying to Bypass",
+  "time": "2023-09-07 03:53:28"
+}
+```
+
+##### Success Bypass
+```json
+{
+  "status": true,
+  "message": "CloudFlare Bypassed",
+  "solution": {
+    "url": "https://nowsecure.nl",
+    "cookies_string": "cf_clearance=D3pCE1KPUC1xLInKA1_ZY7t8y4xOBNFtbM0BMoYVswc-1694033611-0-1-a7b619d3.473fa7c.2544f376-250.2.1694033611",
+    "cookies": [
+      {
+        "name": "cf_clearance",
+        "value": "D3pCE1KPUC1xLInKA1_ZY7t8y4xOBNFtbM0BMoYVswc-1694033611-0-1-a7b619d3.473fa7c.2544f376-250.2.1694033611",
+        "domain": ".nowsecure.nl"
+      }
+    ],
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
+    "response": "<!DOCTYPE html>...</html>"
+  },
+  "start_time": "2023-09-07 03:53:27",
+  "end_time": "2023-09-07 03:53:41",
+  "elapsed_time": "14.19853138923645 seconds"
+}
+```
+
+##### Max Retry Reached
+```json
+{
+  "status": false,
+  "message": "CloudFlare Bypass Failed, Max Retry Reached",
+  "start_time": "",
+  "end_time": "",
+  "elapsed_time": ""
+}
+```
+##### Get Page Verbose
+```
+< GET / HTTP/1.1
+< Host: nowsecure.nl
+< User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+< Accept-Encoding: gzip, deflate
+< Accept: */*
+< Connection: keep-alive
+< Cookie: cf_clearance=D3pCE1KPUC1xLInKA1_ZY7t8y4xOBNFtbM0BMoYVswc-1694033611-0-1-a7b619d3.473fa7c.2544f376-250.2.1694033611
+<
+
+> HTTP/1.1 200 OK
+> Date: Wed, 06 Sep 2023 20:53:41 GMT
+> Content-Type: text/html
+> Transfer-Encoding: chunked
+> Connection: keep-alive
+> Last-Modified: Fri, 27 May 2022 01:42:42 GMT
+> Vary: Accept-Encoding
+> Content-Security-Policy: upgrade-insecure-requests
+> CF-Cache-Status: DYNAMIC
+> Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=3ybU6pFycy9dSWA%2Bu1RVmHYBTFS9nA%2Bh9nRoRdeVxBaw4a2ePZuCbconY5z3gIiJ1XswnZeJ25tJRJXnJCSI39haa4XX3RLmJGR0KRqFRDWbVA7jm25M2Q6gHI%2FOIHI%3D"}],"group":"cf-nel","max_age":604800}
+> NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+> Server: cloudflare
+> CF-RAY: 80299a545f9740cb-SIN
+> Content-Encoding: gzip
+> alt-svc: h3=":443"; ma=86400
+>
+<!doctype html class="h-100">
+.	..
+</html>
+```
+
 
 ## 🍳 Usage/Examples
 
